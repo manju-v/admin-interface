@@ -1,0 +1,25 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="manju">
+    <meta name="description" content="Admin Interface">
+    <title>Admin Interface</title>
+    
+    <!-- load js libraries -->
+    <script src="{% static 'js/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap/bootstrap.min.js' %}"></script>
+    
+
+    <!-- load css libraries -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap/bootstrap.min.css' %}">
+</head>
+<body>
+        {% block content %} {% endblock %}
+</body>
+</html>
+      
+
+
