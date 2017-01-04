@@ -9,19 +9,23 @@ from models import *
 
 
 @csrf_protect
-def main(request):
+def login(request):
 	if(request.method == "POST"):
    		username = request.POST.get('username')
 		password = request.POST.get('password')
 		remember = request.POST.get('remember')
+		try:
+			check_user = Login.objects.get(email=username)
+		except Login.DoesNotExist:
+			return render(request,'login.html',{'error' : 'User do not exist'})
 		
-		return render(request,'login.html')
+		if(check_user.password == password):
+			return HttpResponse("login successful")
 	else:
 		return render(request,'login.html')
 
-@csrf_exempt
+@csrf_protect
 def register(request):
-	context = RequestContext(request)
 	if(request.method == "POST"):
 		empid = request.POST.get('empid')
 		username = request.POST.get('username')
@@ -31,6 +35,6 @@ def register(request):
 		
 		login = Login(emp_id=empid,emp_name=username,email=email,password=password)
 		login.save()
-		return HttpResponse("Sign up")
+		return HttpResponseRedirect('/')
 	else:
-		return render_to_response(request,'register.html')
+		return render(request,'register.html')

@@ -3,6 +3,6 @@ from django.contrib import admin
 from login.views import *
 
 urlpatterns = [
-	url(r'^main', main),
-	url(r'^',register)
+	url(r'^$', login),
+	url(r'^register.*$',register)
 ]
