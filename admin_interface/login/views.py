@@ -5,6 +5,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.views.decorators.csrf import csrf_protect,csrf_exempt
 from admin_interface import settings
 from models import *
+import re
 # Create your views here.
 
 
@@ -31,8 +32,7 @@ def register(request):
 		username = request.POST.get('username')
 		email = request.POST.get('email')
 		password = request.POST.get('password')
-		confirm_pswd = request.POST.get('confirm-password')
-		
+		confirm_pswd = request.POST.get('confirm-password')												   
 		login = Login(emp_id=empid,emp_name=username,email=email,password=password)
 		login.save()
 		return HttpResponseRedirect('/')
