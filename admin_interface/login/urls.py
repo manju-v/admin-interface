@@ -4,5 +4,6 @@ from login.views import *
 
 urlpatterns = [
 	url(r'^$', login),
-	url(r'^register.*$',register)
+	url(r'^register.*$',register),
+	url(r'^validate_email/(?P<email>\w+)/',validate_email)
 ]

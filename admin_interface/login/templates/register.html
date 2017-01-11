@@ -3,6 +3,11 @@
 {% block header %}
     <link href="/static/pagecss/login.css" rel="stylesheet"/>    
     <script src="/static/js/jquery/jquery.validate.min.js"></script>
+	<script src="/static/js/jquery/additional-methods.min.js"></script>
+	<link href="/static/css/jquery/tooltipster.min.css" rel="stylesheet">
+	<script src="/static/js/jquery/jquery.tooltipster.min.js"></script>
+	<script src="/static/pagejs/validate-register.js"></script>
+
 {% endblock %}
 <div class="container">
     <div class="row">
@@ -11,7 +16,7 @@
 	    <div class="panel-heading">
 		<div class="row">
 		    <div class="col-xs-12">
-		        <a href="#" id="register-form-link">Register</a>
+		        <a href="#" class="active" id="register-form-link">Register</a>
 		    </div>
 		</div>
 		<hr>
@@ -28,28 +33,25 @@
                     {% endfor %}
                 {% endif %}
                 <div class="form-group">
-					<input type="text" name="empid" id="empid" tabindex="1" class="form-control" placeholder="Employee id" value="" required>
+					<input type="text" name="empid" id="empid" tabindex="1" class="form-control" placeholder="Employee id" value="" minlength=1 required>
 			    </div>
 			    <div class="form-group">
-					<input type="text" name="username" id="username" tabindex="2" class="form-control" placeholder="Username" value="" required>
+					<input type="text" name="username" id="username" tabindex="2" class="form-control" placeholder="Name" value="" minlength=3 required>
 			    </div>
 			    <div class="form-group">
 			        <input type="email" name="email" id="email" tabindex="3" class="form-control" placeholder="Email Address" value="" required>
 			    </div>
 			    <div class="form-group">
-					<input type="password" name="password" id="password" tabindex="4" class="form-control" placeholder="Password" title="Password must contain at least 8 characters, including UPPER/lowercase and numbers" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" onchange="
-    this.setCustomValidity(this.validity.patternMismatch ? this.title : '');
-    if(this.checkValidity()) form.confirm-password.pattern = this.value;" required>
+					<input type="password" name="password" id="password" tabindex="4" class="form-control" placeholder="Password" required>
 			    </div>
 			    <div class="form-group">
-					<input type="password" name="confirm-password" id="confirm-password" tabindex="5" class="form-control" placeholder="Confirm Password" title="Please enter the same Password as above" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" onchange="
-  this.setCustomValidity(this.validity.patternMismatch ? this.title : '');" required>
+					<input type="password" name="confirm_password" id="confirm_password" tabindex="5" class="form-control" placeholder="Confirm Password" required>
 		    	</div>
 			    <div class="form-group">
 			        <div class="row">
 				        <div class="col-sm-6 col-sm-offset-3">
 					        <input type="submit" name="register-submit" id="register-submit" tabindex="6" class="form-control btn btn-register" value="Register Now">
-				        </div>
+				        </div>						
 				    </div>
 			    </div>
 			</form>
@@ -60,27 +62,6 @@
      </div>
    </div>
 </div>
-<!--<script>
-    $('#register-form').validate({
-        // Specify validation rules
-        rules: {
-            // The key name on the left side is the name attribute
-            // of an input field. Validation rules are defined
-            // on the right side
-            password: {
-            
-            },
-            confirm_password: {
-            equalTo: "#password"
-            },
-        }
-        // Specify validation error messages
-        messages: {
-            confirm_password: {
-                equalTo: "Passwords do not match"   
-            },
-        }
-  });
-</script>-->
+
 {% endblock %}
 

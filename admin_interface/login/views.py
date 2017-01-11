@@ -5,7 +5,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.views.decorators.csrf import csrf_protect,csrf_exempt
 from admin_interface import settings
 from models import *
-import re
+
 # Create your views here.
 
 
@@ -15,13 +15,13 @@ def login(request):
    		username = request.POST.get('username')
 		password = request.POST.get('password')
 		remember = request.POST.get('remember')
-		try:
-			check_user = Login.objects.get(email=username)
-		except Login.DoesNotExist:
-			return render(request,'login.html',{'error' : 'User do not exist'})
+		#try:
+		#	check_user = Login.objects.get(email=username)
+		#except Login.DoesNotExist:
+		#	return render(request,'login.html',{'error' : 'User do not exist'})
 		
-		if(check_user.password == password):
-			return HttpResponse("login successful")
+		if(check_user.password != password):
+			return render(request,'login.html',{'error' : 'Incorrect password'})
 	else:
 		return render(request,'login.html')
 
@@ -38,3 +38,12 @@ def register(request):
 		return HttpResponseRedirect('/')
 	else:
 		return render(request,'register.html')
+	
+@csrf_protect
+def validate_email(request):
+	email = request.Get.get('email')
+	try:
+		check_user = Login.objects.get(email=username)
+		return HttpResponse(True)
+	except Login.DoesNotExist:
+		return HttpResponse(False)
