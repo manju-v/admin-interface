@@ -31,7 +31,7 @@
                     {% endfor %}
                 {% endif %}
 			    <div class="form-group">
-				<input type="text" name="email" id="email" tabindex="1" class="form-control" placeholder="Email" required>
+				<input type="email" name="email" id="email" tabindex="1" class="form-control" placeholder="Email" required>
 			    </div>
 			    <div class="form-group">
 			        <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password" required>
@@ -68,16 +68,38 @@
 </div>
 <script>
  $().ready(function () {
+	 
+	$('#login-form input').tooltipster({ 	  	
+        trigger: 'custom', 
+        onlyOne: false,    
+        position: 'right',
+	  	animation: 'grow'
+    });
+  
 	$('#login-form').validate({
+	errorPlacement: function (error, element) {
+            var lastError = $(element).data('lastError'),
+                newError = $(error).text();
+
+            $(element).data('lastError', newError);
+
+            if(newError !== '' && newError !== lastError){
+                $(element).tooltipster('content', newError);
+                $(element).tooltipster('show');
+            }
+        },
+        success: function (label, element) {
+            $(element).tooltipster('hide');
+        },
     rules: {
         email: {
            
-            remote: "/login/validate_email/"
+            remote: "validate_email/"
         }
     },
 	messages: {
 		email: {
-			remote: "User do not exist"
+			remote: "Invalid Email Entered"
 		}
 	},
     
