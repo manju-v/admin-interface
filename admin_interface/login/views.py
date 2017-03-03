@@ -12,12 +12,15 @@ import datetime
 
 @csrf_protect
 def login(request):
+	context = RequestContext(request)
 	if(request.method == "POST"):
    		email = request.POST.get('email')
 		password = request.POST.get('password')
 		remember = request.POST.get('remember')
+		check_user = Login.objects.get(email = email)
 		if(check_user.password != password):
 			return render(request,'login.html',{'error' : 'Incorrect password'})
+		return HttpResponseRedirect('/default_rule')
 	else:
 		return render(request,'login.html')
 

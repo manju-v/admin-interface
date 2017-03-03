@@ -1,0 +1,51 @@
+{
+	"data": [
+		{
+			"rule_name": "R1",
+			"status": 0,
+			"mode": 0,
+			"conditions": 
+				[
+					"g_totalCount < 250",
+					"g_snapDealCount == 0",
+					"g_totalCount < 250",
+					"g_snapDealCount == 0",
+					"g_totalCount < 250",
+					"g_snapDealCount == 0",
+					"g_totalCount < 250",
+					"g_snapDealCount == 0"
+				]
+			
+		},
+		{
+			"rule_name": "R2-1",
+			"status": 1,
+			"mode": 1,
+			"conditions": 
+				[
+					"g_totalCount < 250",
+					"g_snapDealCount == 0",
+					"g_totalCount < 250"
+					
+				]
+			
+		},
+		{
+			"rule_name": "R2-2",
+			"status": 1,
+			"mode": 1,
+			"conditions": 
+				[
+					"g_totalCount < 250",
+					"g_snapDealCount == 0",
+					"g_distUZMA >= 90 % of g_totalCount",
+					"g_topUZMC >= 80 % of g_totalCount"
+					
+				]
+			
+		}
+		
+	]
+}
+
+

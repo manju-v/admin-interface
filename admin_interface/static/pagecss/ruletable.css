@@ -1,0 +1,52 @@
+.content
+{
+  
+    height:100%;
+	width: 80%;
+	margin: 5% 0 0 16%;
+}
+
+thead {
+	background-color:#f1f1f1;
+}
+
+.modal-header {
+background-color: #2b669a
+}
+
+
+button.close{
+color: white;
+}
+
+#rule-name{
+width: 250px;
+}
+
+#settings{
+	margin-top: 20px;
+	font-weight: bold;
+	background-color: black;
+	color:white;
+}
+
+.modal-title{
+	color: white;
+}
+.form-inline .row{
+	margin: 2px 0px 0px 0px!important;
+	
+	background-color: #F0FFFF;
+}
+
+
+#response-code{
+	width: 120px;
+}
+/*td.details-control {
+    background: url('/static/img/details_open.png') no-repeat center center;
+    cursor: pointer;
+}
+tr.shown td.details-control {
+    background: url('/static/img/details_close.png') no-repeat center center;
+}*/

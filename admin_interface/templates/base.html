@@ -14,9 +14,25 @@
     
 
     <!-- load css libraries -->
+	<link rel="stylesheet" href="{% static 'pagecss/base.css' %}">
     <link rel="stylesheet" href="{% static 'css/bootstrap/bootstrap.min.css' %}">
+	
 </head>
 <body>
+	<nav class="navbar navbar-fixed-top">
+		<div class="navbar-header">
+                <img src="{% static 'img/ss-logo.png' %}" alt="logo" class="logo-default">
+        </div>
+	</nav>
+	{% if is_authenticated %}
+	<div class = "vertical-nav">
+		<ul>
+			<li><a class="active" href="/default_rule/">Rules</a></li>
+			<li><a href="#">Features</a></li>
+			
+		</ul>
+		{% endif %}
+	</div>
         {% block content %} {% endblock %}
 </body>
 </html>

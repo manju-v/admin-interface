@@ -1,0 +1,23 @@
+{
+	"data": [
+		{
+			"rule_name": "R1",
+			"status": 0,
+			"mode": 0,
+			"conditions": 
+				[
+					"g_totalCount < 250",
+					"g_snapDealCount == 0",
+					"g_totalCount < 250",
+					"g_snapDealCount == 0",
+					"g_totalCount < 250",
+					"g_snapDealCount == 0",
+					"g_totalCount < 250",
+					"g_snapDealCount == 0"
+				]
+			
+		}
+	]
+}
+				
+
